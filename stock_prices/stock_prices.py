@@ -5,11 +5,17 @@ import argparse
 
 def find_max_profit(prices):
     min_price_so_far = float("inf")
-    max_profit = 0
+    current_max_profit = float("-inf")
+    max_profit = float("-inf")
     for p in prices:
-        print(max_profit, p - min_price_so_far)
-        max_profit = max(max_profit, p - min_price_so_far)
-        min_price_so_far = min(p, min_price_so_far)
+        current_max_profit = p - min_price_so_far
+        
+        if p < min_price_so_far:
+            min_price_so_far = p
+        
+        if current_max_profit > max_profit:
+            max_profit = current_max_profit
+
     return max_profit
 
 
